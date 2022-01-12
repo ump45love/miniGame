@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: lib/ij.jar
+Main-Class: main

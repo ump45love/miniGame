@@ -9,23 +9,23 @@ public class ball {
 		
 	}
 	
-	public ball(byte r,int c) {
-		radius = r;
-		color = c;
+	public ball(byte radius,int color) {
+		this.radius = radius;
+		this.color = color;
 	}
 	
-	void setRadius(byte r) {
-		radius = r;
+	public void setRadius(byte radius) {
+		this.radius = radius;
 	}
 	
-	void setColor(int c) {
-		color = c;
+	public void setColor(int color) {
+		this.color = color;
 	}
 	
-	byte getSize() {
+	public byte getSize() {
 		return radius;
 	}
-	int getColor() {
+	public int getColor() {
 		return color;
 	}
 

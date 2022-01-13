@@ -13,28 +13,28 @@ public class canvas {
 		
 	}
 	
-	public canvas(byte w,byte h,int c) {
-		width = w;
-		height = h;
-		color = c;
-		setSize(w,h);
+	public canvas(byte width,byte height,int color) {
+		this.width = width;
+		this.height = height;
+		this.color = color;
+		setSize(width,height);
 	}
 	
-	void setSize(byte w,byte h) {
-		size[0] = w;
-		size[1] = h;
+	public void setSize(byte width,byte height) {
+		size[0] = width;
+		size[1] = height;
 		
 	}
-	void setColor(int c) {
-		color = c;
+	public void setColor(int color) {
+		this.color = color;
 	}
 	
 	
-	byte[] getSize() {
+	public byte[] getSize() {
 		return size;
 	}
 	
-	int getColor() {
+	public int getColor() {
 		return color;
 	}
 

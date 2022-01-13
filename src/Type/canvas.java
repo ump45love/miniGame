@@ -15,7 +15,11 @@ public class canvas {
 		color = 0;
 		
 	}
-	public drawBall() {
+	public void drawBall(Ball ball) {
+		
+	}
+	
+	public void drawBrick(Brick brick) {
 		
 	}
 	public canvas(byte width,byte height,int color) {

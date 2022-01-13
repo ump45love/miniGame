@@ -1,10 +1,13 @@
 package Type;
 
+import ij.ImagePlus;
+
 public class canvas {
 	private byte width;
 	private byte height;
 	private byte size[] = new byte[2];
 	private int color;
+	private ImagePlus canvas = new ImagePlus();
 	
 	public canvas() {
 		width = 0;
@@ -12,7 +15,9 @@ public class canvas {
 		color = 0;
 		
 	}
-	
+	public drawBall() {
+		
+	}
 	public canvas(byte width,byte height,int color) {
 		this.width = width;
 		this.height = height;
@@ -29,6 +34,9 @@ public class canvas {
 		this.color = color;
 	}
 	
+	public void setCanvas() {
+	}
+	
 	
 	public byte[] getSize() {
 		return size;
@@ -37,6 +45,12 @@ public class canvas {
 	public int getColor() {
 		return color;
 	}
+	
+	public ImagePlus getCanvas() {
+		return canvas;
+	}
+	
+	
 
 
 

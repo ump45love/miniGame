@@ -11,6 +11,7 @@ import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
+import Type.*;
 import ij.ImagePlus;
 
 public class drawCanvasFunction {

@@ -16,4 +16,14 @@ public class drawCanvas {
 		  data.setMapview(drawCanvasFunction.renderMap(data.getMapview(),data.getBufferImage()));
 		  return data;
 	}
+	
+	public MapData[][] drawMap(MapData[][] data) {
+		for(int i = 0; i<data.length; i++) {
+			for(int j =0; j<data[0].length; j++) {
+				  data[i][j].setMapview(drawCanvasFunction.removeRenderMap(data[i][j].getMapview()));
+				  data[i][j].setMapview(drawCanvasFunction.renderMap(data[i][j].getMapview(),data[i][j].getBufferImage()));
+			}
+		}
+		  return data;
+	}
 }

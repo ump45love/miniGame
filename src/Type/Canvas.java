@@ -1,52 +1,52 @@
 package Type;
 
 import ij.ImagePlus;
+import ij.process.ColorProcessor;
+import ij.process.ImageProcessor;
 
 public class Canvas extends CanvasParent{
-	private byte width;
-	private byte height;
-	private byte size[] = new byte[2];
 	private int color;
 	private ImagePlus canvas = new ImagePlus();
+	ImageProcessor paperProcessor = null;
 	
 	public Canvas() {
 		super((byte)0);
-		width = 0;
-		height = 0;
 		color = 0;
 		
 	}
+	
+	public void setCanvas() {
+		paperProcessor = new ColorProcessor(256*ratio,256*ratio);
+		paperProcessor.setBackgroundValue(color);
+		canvas.setProcessor(paperProcessor);
+	}
 	public void drawBall(Ball ball) {
-		
+		int position[] = ball.getPosition();
+		byte radius = ball.getSize();
+		int color = ball.getColor();
+		paperProcessor.setColor(color);
+		paperProcessor.fill
 	}
 	
 	public void drawBrick(Brick brick) {
-		
+		int position[] = brick.getPosition();
+		byte size[] = brick.getSize();
+		int color = brick.getColor();
+		paperProcessor.setColor(color);
+		paperProcessor.fillRect(position[0], position[1], size[0], size[1]);
+	
 	}
-	public Canvas(byte width,byte height,int color,byte ratio) {
+	public Canvas(int color,byte ratio) {
 		super(ratio);
-		this.width = width;
-		this.height = height;
 		this.color = color;
-		setSize(width,height);
+		setCanvas()
 	}
 	
-	public void setSize(byte width,byte height) {
-		size[0] = width;
-		size[1] = height;
-		
-	}
 	public void setColor(int color) {
 		this.color = color;
+		setCanvas()
 	}
 	
-	public void setCanvas() {
-	}
-	
-	
-	public byte[] getSize() {
-		return size;
-	}
 	
 	public int getColor() {
 		return color;

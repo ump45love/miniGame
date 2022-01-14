@@ -1,6 +1,6 @@
 package Type;
 
-public class Ball {
+public class Ball extends CanvasParent{
 	private byte radius;
 	private int color;
 	private int[] position = new int[2];

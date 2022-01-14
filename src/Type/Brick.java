@@ -1,6 +1,6 @@
 package Type;
 
-public class Brick {
+public class Brick extends CanvasParent {
 	private byte width;
 	private byte height;
 	private byte size[] = new byte[2];

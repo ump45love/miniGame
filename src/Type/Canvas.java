@@ -2,14 +2,14 @@ package Type;
 
 import ij.ImagePlus;
 
-public class canvas {
+public class Canvas extends CanvasParent{
 	private byte width;
 	private byte height;
 	private byte size[] = new byte[2];
 	private int color;
 	private ImagePlus canvas = new ImagePlus();
 	
-	public canvas() {
+	public Canvas() {
 		width = 0;
 		height = 0;
 		color = 0;
@@ -22,7 +22,7 @@ public class canvas {
 	public void drawBrick(Brick brick) {
 		
 	}
-	public canvas(byte width,byte height,int color) {
+	public Canvas(byte width,byte height,int color) {
 		this.width = width;
 		this.height = height;
 		this.color = color;

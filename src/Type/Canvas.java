@@ -10,6 +10,7 @@ public class Canvas extends CanvasParent{
 	private ImagePlus canvas = new ImagePlus();
 	
 	public Canvas() {
+		super((byte)0);
 		width = 0;
 		height = 0;
 		color = 0;
@@ -22,7 +23,8 @@ public class Canvas extends CanvasParent{
 	public void drawBrick(Brick brick) {
 		
 	}
-	public Canvas(byte width,byte height,int color) {
+	public Canvas(byte width,byte height,int color,byte ratio) {
+		super(ratio);
 		this.width = width;
 		this.height = height;
 		this.color = color;

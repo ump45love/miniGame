@@ -6,11 +6,13 @@ public class Ball extends CanvasParent{
 	private int[] position = new int[2];
 	
 	public Ball() {
+		super((byte) 0);
 		radius = 0;
 		
 	}
 	
-	public Ball(byte radius,int color) {
+	public Ball(byte radius,int color,byte ratio) {
+		super(ratio);
 		this.radius = radius;
 		this.color = color;
 	}

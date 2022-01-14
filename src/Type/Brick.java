@@ -8,13 +8,15 @@ public class Brick extends CanvasParent {
 	private int[] position = new int[2];
 	
 	public Brick() {
+		super((byte)0);
 		width = 0;
 		height = 0;
 		color = 0;
 		
 	}
 	
-	public Brick(byte width,byte height,int color) {
+	public Brick(byte width,byte height,int color,byte ratio) {
+		super(ratio);
 		this.width = width;
 		this.height = height;
 		this.color = color;

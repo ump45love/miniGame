@@ -6,6 +6,7 @@ public class Brick extends CanvasParent {
 	private byte size[] = new byte[2];
 	private int color;
 	private int[] position = new int[2];
+	private byte increase;
 	
 	public Brick() {
 		super((byte)0);
@@ -15,13 +16,14 @@ public class Brick extends CanvasParent {
 		
 	}
 	
-	public Brick(byte width,byte height,int color,byte ratio) {
+	public Brick(byte width,byte height,int color,byte increas,byte ratio) {
 		super(ratio);
 		this.width = width;
 		this.height = height;
 		this.color = color;
 		this.position[0]=0;
 		this.position[1]=0;
+		this.increase = increas;
 		setSize(width,height);
 	}
 	
@@ -33,9 +35,29 @@ public class Brick extends CanvasParent {
 	public void setColor(int color) {
 		this.color = color;
 	}
-	public void increasePosition(int inX, int inY) {
-		position[0] = position[0]+inX;
-		position[1] =position[1]+inY;
+	public void setIncrease(byte increase) {
+		this.increase = increase;
+	}
+	
+	public void increaseX() {
+		if((position[0] + increase) <(256*ratio))
+			position[0] = position[0] + increase;
+		
+	}
+	public void increaseY() {
+		if((position[1] + increase) <(256*ratio))
+			position[1] =position[1] + increase;
+		
+	}
+	
+	public void decreaseX() {
+		if((position[0] - increase) >= 0)
+			position[0] = position[0] - increase;
+		
+	}
+	public void decreaseY() {
+		if((position[1] - increase) >= 0)
+			position[1] =position[1] - increase;
 		
 	}
 	public void setPosiotion(int x, int y) {

@@ -25,7 +25,7 @@ public class Canvas extends CanvasParent{
 		byte radius = ball.getSize();
 		int color = ball.getColor();
 		paperProcessor.setColor(color);
-		paperProcessor.fill
+		paperProcessor.fillOval(position[0], position[1], radius*ratio, radius*ratio);
 	}
 	
 	public void drawBrick(Brick brick) {
@@ -33,18 +33,18 @@ public class Canvas extends CanvasParent{
 		byte size[] = brick.getSize();
 		int color = brick.getColor();
 		paperProcessor.setColor(color);
-		paperProcessor.fillRect(position[0], position[1], size[0], size[1]);
+		paperProcessor.fillRect(position[0], position[1], size[0]*ratio, size[1]*ratio);
 	
 	}
 	public Canvas(int color,byte ratio) {
 		super(ratio);
 		this.color = color;
-		setCanvas()
+		setCanvas();
 	}
 	
 	public void setColor(int color) {
 		this.color = color;
-		setCanvas()
+		setCanvas();
 	}
 	
 	

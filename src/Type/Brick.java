@@ -1,5 +1,7 @@
 package Type;
 
+import java.util.UUID;
+
 public class Brick extends CanvasParent {
 	private byte width;
 	private byte height;
@@ -7,6 +9,7 @@ public class Brick extends CanvasParent {
 	private int color;
 	private int[] position = new int[2];
 	private byte increase;
+	private UUID uuid;
 	
 	public Brick() {
 		super((byte)0);
@@ -27,6 +30,16 @@ public class Brick extends CanvasParent {
 		setSize(width,height);
 	}
 	
+	public void setUUID(UUID uuid) {
+		this.uuid = uuid;
+	}
+	
+	public boolean isUUID(UUID uuid) {
+		if(this.uuid == uuid)
+			return true;
+		return false;
+	}
+	
 	public void setSize(byte width,byte height) {
 		size[0] = width;
 		size[1] = height;
@@ -38,7 +51,7 @@ public class Brick extends CanvasParent {
 	public void setIncrease(byte increase) {
 		this.increase = increase;
 	}
-	
+
 	public void increaseX() {
 		if((position[0] + increase) <(256*ratio))
 			position[0] = position[0] + increase;

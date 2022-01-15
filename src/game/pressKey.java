@@ -1,49 +1,57 @@
 package game;
 
-import java.awt.event.KeyEvent;
+import java.util.UUID;
 
 import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.plugin.java.JavaPlugin;
+
+import Type.staticVar;
 
 
-public class pressKey extends JavaPlugin implements Listener  {
+public class pressKey implements Listener  {
 	@EventHandler
 	 public void onMove(PlayerMoveEvent event) {
+		if(staticVar.getOnOff()) {
 		 Player player  = event.getPlayer();
+		 UUID playerUUID = player.getUniqueId();
 		 final Location from = event.getFrom();
 	     final Location to = event.getTo();
-	     if(to.getX()!= from.getX()) {
-	    	 if((to.getYaw()<45) || (315 < to.getYaw())) {
-	    		 if(from.getZ()-to.getZ() < 0)
-	    			 player.sendMessage("전진");
-	    		 else
-	    			 player.sendMessage("후진");
-	    	 }
-	    	 else if((45<to.getYaw()) || ( to.getYaw() < 135)) {
-	    		 if(from.getX()-to.getX() < 0)
-	    			 player.sendMessage("전진");
-	    		 else
-	    			 player.sendMessage("후진");
-	    	 }
-	    	 else if((135<to.getYaw()) || ( to.getYaw() < 225)) {
-	    		 if(to.getZ()-from.getZ() < 0)
-	    			 player.sendMessage("전진");
-	    		 else
-	    			 player.sendMessage("후진");
-	    	 }
-	    	 else {
-	    		 if(to.getX()-from.getX() < 0)
-	    			 player.sendMessage("전진");
-	    		 else
-	    			 player.sendMessage("후진");
-	    	 
+	     double formX = from.getDirection().getX();
+	     for(int i = 0; i<2; i++) {
+	    	 if(staticVar.brick[i].isUUID(playerUUID)) {;
+	    	 	if(to.getX()!= from.getX()) {
+	    	 		if(0.5<formX) {
+	    	 			if(from.getX()-to.getX() < 0)
+	    	 				staticVar.brick[i].increaseX();
+	    	 			else
+	    	 				staticVar.brick[i].decreaseX();
+	    	 		}
+	    	 		else if(-0.5 > formX) {
+	    	 			if(to.getX()-from.getX() < 0)
+	    	 				staticVar.brick[i].increaseX();
+	    	 			else
+	    	 				staticVar.brick[i].decreaseX();
+	    	 		}
+	    	 		else{
+	    	 			if(-0.5>from.getDirection().getZ()) {
+	    	 				if(from.getZ()-to.getZ() < 0)
+	    	 					player.sendMessage("후진");
+	    	 				else
+	    	 					staticVar.brick[i].decreaseX();
+	    	 			}
+	    	 			else {
+	    	 				if(from.getZ()-to.getZ() < 0)
+	    	 					staticVar.brick[i].increaseX();
+	    	 				else
+	    	 					staticVar.brick[i].decreaseX();
+	    	 			}
+	    	 		}
+	    	 	}
 	    	 }
 	     }
-	//do something
-	}
+	 }
+}
 }

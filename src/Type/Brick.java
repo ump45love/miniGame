@@ -24,8 +24,7 @@ public class Brick extends CanvasParent {
 		this.width = width;
 		this.height = height;
 		this.color = color;
-		this.position[0]=0;
-		this.position[1]=0;
+		this.position = position;
 		this.increase = increas;
 		setSize(width,height);
 	}

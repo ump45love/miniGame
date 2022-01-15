@@ -17,7 +17,7 @@ public class Ball extends CanvasParent{
 		moveX = 1;
 	}
 	
-	byte checkGameOver(){
+	public byte checkGameOver(){
 		if(radius>position[0]) {
 			return 1;
 		}

@@ -38,7 +38,7 @@ public class pressKey implements Listener  {
 	    	 		else{
 	    	 			if(-0.5>from.getDirection().getZ()) {
 	    	 				if(from.getZ()-to.getZ() < 0)
-	    	 					player.sendMessage("ÈÄÁø");
+	    	 					staticVar.brick[i].decreaseX();
 	    	 				else
 	    	 					staticVar.brick[i].decreaseX();
 	    	 			}

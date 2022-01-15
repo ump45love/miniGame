@@ -15,6 +15,12 @@ public class Canvas extends CanvasParent{
 		
 	}
 	
+	public Canvas(byte size,int color) {
+		super((byte)0);
+		color = 0;
+		
+	}
+	
 	public void setCanvas() {
 		paperProcessor = new ColorProcessor(256*ratio,256*ratio);
 		paperProcessor.setBackgroundValue(color);

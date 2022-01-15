@@ -24,14 +24,31 @@ public class Main extends JavaPlugin implements Listener{
 		 Player player  = event.getPlayer();
 		 final Location from = event.getFrom();
 	     final Location to = event.getTo();
-	     if(to.getX()!= from.getX())
-	     if(((0<=to.getYaw()) && (to.getYaw()<45)) || (315 < to.getYaw())) {
-	    	 if(from.getZ()-to.getZ() < 0)
-	    		 player.sendMessage("전진");
-	    	 else
-	    		 player.sendMessage("후진");
+	     double formX = from.getDirection().getX();
+	     player.sendMessage(from.serialize()+"");
+	     if(to.getX()!= from.getX()) {
+	    	
+		    	 if(0.5<formX) {
+		    		 if(from.getX()-to.getX() < 0)
+		    			 player.sendMessage("전진");
+		    		 else
+		    			 player.sendMessage("후진");
+		    	 }
+		    	 else if(-0.5 > formX) {
+		    		 if(to.getX()-from.getX() < 0)
+		    			 player.sendMessage("전진");
+		    		 else
+		    			 player.sendMessage("후진");
+		    	 }
+		    	 else{
+		    		 if(from.getZ()-to.getZ() < 0)
+		    			 player.sendMessage("전진");
+		    		 else
+		    			 player.sendMessage("후진");
+		    	 }
 	     }
-	//do something
+	//do something}
+	     
 	}
 	@Override
 	public void onDisable(){

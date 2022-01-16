@@ -5,11 +5,11 @@ public class CanvasParent {
 	CanvasParent(byte ratio){
 		this.ratio = ratio;
 	}
-	void setRatio(byte ratio) {
+	public void setRatio(byte ratio) {
 		this.ratio = ratio;
 	}
 	
-	byte getRatio() {
+	public byte getRatio() {
 		return ratio;
 	}
 	

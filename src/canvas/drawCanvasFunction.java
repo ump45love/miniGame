@@ -26,6 +26,18 @@ public class drawCanvasFunction {
 		
 	}
 	
+	public static MapView[] renderMaps(MapView[] view,BufferedImage[] image) {
+		for(int i =0; i<view.length; i++) {
+			final int number = i;
+			view[i].addRenderer(new MapRenderer() {
+				public void render(MapView view, MapCanvas canvas, Player player) {
+				canvas.drawImage(0, 0, image[number]);
+				}});
+		}
+		return view;
+		
+	}
+	
 	public static MapView removeRenderMap(MapView view) {
 		 for(MapRenderer r : view.getRenderers()) {
 				view.removeRenderer(r);

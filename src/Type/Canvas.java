@@ -1,5 +1,7 @@
 package Type;
 
+import java.awt.image.BufferedImage;
+
 import ij.ImagePlus;
 import ij.gui.Roi;
 import ij.process.ColorProcessor;
@@ -27,7 +29,6 @@ public class Canvas extends CanvasParent{
 		paperProcessor.setBackgroundValue(color);
 		canvas.setProcessor(paperProcessor);
 	}
-	
 	public ImagePlus getCanvas() {
 		if(ratio == 1)
 			return canvas;
@@ -44,6 +45,31 @@ public class Canvas extends CanvasParent{
 				}
 			}
 			return canvas.crop(roi);
+		}
+		return null;
+	}
+	
+	public BufferedImage getbufferedImage(){
+		if(ratio == 1)
+			return canvas.getBufferedImage();
+		return null;
+	}
+	
+	public BufferedImage[] getbufferedImages() {
+		int count =0;
+		if(ratio >1) {
+			Roi roi[] = new Roi[ratio*ratio];
+			for(int i =0; i<ratio; i++) {
+				for(int j = 0; j<ratio; j++) {
+				roi[count++] = new Roi(i*256,j*256,256,256);
+				}
+			}
+			ImagePlus[] image = canvas.crop(roi);
+			BufferedImage[] bufferImage = new BufferedImage[ratio*ratio];
+			for(int i =0; i<ratio*ratio; i++)
+				bufferImage[i] = image[i].getBufferedImage();
+				
+			return bufferImage;
 		}
 		return null;
 	}

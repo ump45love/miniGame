@@ -28,7 +28,30 @@ public class placeMapFunction {
 		
 	}
 	
-	public void placeMap(Material block,Player player,int size) {
-		
+	public void placeMap(Player player,int size,ItemStack item) {
+		 Location loc = player.getLocation();
+		 World w = loc.getWorld();
+		 double x = loc.getX();
+		 double y = loc.getY();
+		 loc.setX(x);
+		 loc.setY(y); 
+		 ItemFrame f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()+1), ItemFrame.class);
+		 f.setItem(item);
+	}
+	
+	public void placeMaps(Player player,int size,ItemStack[] item) {
+		 Location loc = player.getLocation();
+		 World w = loc.getWorld();
+		 int count = 0;
+		 double x = loc.getX();
+		 double y = loc.getY();
+		 for(int i = 0; i< size; i++) {
+			loc.setX(x+i);
+			for(int j = 0; j<size; j++) {
+				loc.setY(y+j); 
+				 ItemFrame f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()+1), ItemFrame.class);
+		         f.setItem(item[count]);
+			}
+		 }
 	}
 }

@@ -1,5 +1,8 @@
 main : main.Main
 name : pingpong
+commands: 
+  pp: 
+    description: "pingpong"
 version : 1.0.0
 author : ump45
 description : pingpongGame

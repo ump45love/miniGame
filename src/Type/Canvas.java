@@ -1,6 +1,7 @@
 package Type;
 
 import ij.ImagePlus;
+import ij.gui.Roi;
 import ij.process.ColorProcessor;
 import ij.process.ImageProcessor;
 
@@ -25,6 +26,26 @@ public class Canvas extends CanvasParent{
 		paperProcessor = new ColorProcessor(256*ratio,256*ratio);
 		paperProcessor.setBackgroundValue(color);
 		canvas.setProcessor(paperProcessor);
+	}
+	
+	public ImagePlus getCanvas() {
+		if(ratio == 1)
+			return canvas;
+		return null;
+	}
+	
+	public ImagePlus[] getCanvases() {
+		int count =0;
+		if(ratio >1) {
+			Roi roi[] = new Roi[ratio*ratio];
+			for(int i =0; i<ratio; i++) {
+				for(int j = 0; j<ratio; j++) {
+				roi[count++] = new Roi(i*256,j*256,256,256);
+				}
+			}
+			return canvas.crop(roi);
+		}
+		return null;
 	}
 	public void drawBall(Ball ball) {
 		int position[] = ball.getPosition();
@@ -56,10 +77,6 @@ public class Canvas extends CanvasParent{
 	
 	public int getColor() {
 		return color;
-	}
-	
-	public ImagePlus getCanvas() {
-		return canvas;
 	}
 	
 	

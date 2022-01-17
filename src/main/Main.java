@@ -1,47 +1,28 @@
 package main;
 
-import java.awt.event.KeyEvent;
-import java.io.File;
+
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
+import Type.staticVar;
+import game.playGameFunction;
 import game.pressKey;
-import minecraft.startRead;
-import p.getcommand;
+
 public class Main extends JavaPlugin implements Listener{
 	@Override
 	public void onEnable(){
-		File Folder = new File(getDataFolder(),"image");
-		if (!Folder.exists()) {
-			try{
-			    Folder.mkdir(); //폴더 생성합니다.
-		        } 
-		        catch(Exception e){
-			    e.getStackTrace();
-			}     
-		}
-		Folder = new File(getDataFolder(),"map");
-		if (!Folder.exists()) {
-			try{
-			    Folder.mkdir(); //폴더 생성합니다.
-		        } 
-		        catch(Exception e){
-			    e.getStackTrace();
-			}     
-		}
-		else {
-			startRead.read();
-		}
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
 		getServer().getPluginManager().registerEvents(new pressKey(),this);
+		staticVar.task = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(new Main(), new Runnable() {
+			public void run() {
+				if(!staticVar.onOff)
+					Bukkit.getServer().getScheduler().cancelTask(staticVar.task);
+				playGameFunction.run();
+			}},0,0);
 		getCommand("map").setExecutor(new getCommand());
 	}
 	     

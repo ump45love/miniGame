@@ -23,6 +23,7 @@ public class staticVar {
 	public static byte ballIncrease = 4;
 	public static byte checkWinner = 1;
 	public static byte brickBorder = 20;
+	public static int task = 0;
 	
 	static public boolean getOnOff() {
 		return onOff;

@@ -17,7 +17,7 @@ public class playGameFunction {
 		staticVar.brick[1].setUUID(uuid[1]);
 		staticVar.ball.setPosiotion((256*ratio)/2, (256*ratio)/2);
 	}
-	void run() {
+	public static void run() {
 		staticVar.ball.brickCrash(staticVar.brick[0]);
 		staticVar.ball.brickCrash(staticVar.brick[1]);
 		staticVar.ball.wallCrash();

@@ -11,23 +11,8 @@ import org.bukkit.inventory.ItemStack;
 
 import Type.*;
 import place.placeMapFunction;
-public void placeBlock(Location loc,int size,Material block) {
-    World w = loc.getWorld();
-    Block b = null;
-    double x = loc.getX();
-    double y = loc.getY();
-	for(int i = 0; i< size; i++) {
-		loc.setX(x+i);
-		for(int j = 0; j<size; j++) {
-			loc.setY(y+j); 
-			 b = w.getBlockAt(loc);
-			 b.setType(block);
-		}
-	}
 
-}
 
-public void placeMap(Location loc,ItemStack item) {
 public class playGameFunction {
 	public static void start(UUID uuid[],byte ratio,World world) {
 		staticVar.location.add(Bukkit.getPlayer(uuid[0]).getLocation());

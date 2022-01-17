@@ -2,6 +2,11 @@ package Type;
 
 import java.awt.image.BufferedImage;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.MapMeta;
+import org.bukkit.map.MapView;
+
 import ij.ImagePlus;
 import ij.gui.Roi;
 import ij.process.ColorProcessor;
@@ -11,6 +16,10 @@ public class Canvas extends CanvasParent{
 	private int color;
 	private ImagePlus canvas = new ImagePlus();
 	ImageProcessor paperProcessor = null;
+	MapView view = null;
+	MapView views[] = null;
+	ItemStack stack = null;
+	ItemStack stacks[] = null;
 	
 	public Canvas() {
 		super((byte)0);
@@ -73,6 +82,7 @@ public class Canvas extends CanvasParent{
 		}
 		return null;
 	}
+	
 	public void drawBall(Ball ball) {
 		int position[] = ball.getPosition();
 		byte radius = ball.getSize();

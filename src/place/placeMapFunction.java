@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class placeMapFunction {
 	@SuppressWarnings("deprecation")
-	public void placeBlock(Location loc,int size,Material block) {
+	public static void placeBlock(Location loc,int size,Material block) {
 		    World w = loc.getWorld();
 		    Block b = null;
 		    double x = loc.getX();
@@ -26,7 +26,7 @@ public class placeMapFunction {
 		
 	}
 	
-	public void placeMap(Location loc,ItemStack item) {
+	public static  void placeMap(Location loc,ItemStack item) {
 		 World w = loc.getWorld();
 		 double x = loc.getX();
 		 double y = loc.getY();
@@ -36,7 +36,7 @@ public class placeMapFunction {
 		 f.setItem(item);
 	}
 	
-	public void placeMaps(Location loc,int size,ItemStack[] item) {
+	public static  void placeMaps(Location loc,int size,ItemStack[] item) {
 		 World w = loc.getWorld();
 		 int count = 0;
 		 double x = loc.getX();
@@ -51,7 +51,7 @@ public class placeMapFunction {
 		 }
 	}
 
-	public void repair(Location loc,ItemStack item,Material block) {
+	public static  void repair(Location loc,ItemStack item,Material block) {
 	    World w = loc.getWorld();
 	    Block b = null;
 		b = w.getBlockAt(loc);
@@ -63,7 +63,7 @@ public class placeMapFunction {
 			placeMap(loc,item);
 	}
 	
-	public void repairBlocks(Location loc,int size,Material block) {
+	public static  void repairBlocks(Location loc,int size,Material block) {
 	    World w = loc.getWorld();
 	    Block b = null;
 		b = w.getBlockAt(loc);
@@ -82,7 +82,7 @@ public class placeMapFunction {
 		}
 	}
 	
-	public void repairMaps(Location loc,int size,ItemStack[] item) {
+	public static  void repairMaps(Location loc,int size,ItemStack[] item) {
 	    World w = loc.getWorld();
 	    loc.setZ(loc.getZ()+1);
 	    double x = loc.getX();
@@ -100,7 +100,7 @@ public class placeMapFunction {
 		}
 	}
 	
-	public boolean checkBlock(Player player,int size) {
+	public static  boolean checkBlock(Player player,int size) {
 	    Location loc = player.getLocation();
 	    World w = loc.getWorld();
 	    Block b = null;

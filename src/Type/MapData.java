@@ -3,8 +3,11 @@ package Type;
 import java.awt.image.BufferedImage;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.MapMeta;
 import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
@@ -15,6 +18,8 @@ public class MapData{
 	private int ids[];
 	private MapView view;
 	private MapView[] views = null;
+	ItemStack stack = new ItemStack(Material.FILLED_MAP);
+	ItemStack stacks[] = null;
 	public MapData(World world){
 		this.world = world;
 		view = Bukkit.createMap(world);
@@ -22,11 +27,13 @@ public class MapData{
 	}
 	public MapData(World world, byte count){
 		this.world = world;
-		views = new MapView[count];
-		ids = new int[count];
-		for(int i = 0; i<count; i++) {
+		views = new MapView[count*count];
+		ids = new int[count*count];
+		stacks = new ItemStack[count*count];
+		for(int i = 0; i<count*count; i++) {
 			views[i] = Bukkit.createMap(world);
 			ids[i] = views[i].getId();
+			stacks[i] = new ItemStack(Material.FILLED_MAP);
 		}
 	}
 	
@@ -59,6 +66,22 @@ public class MapData{
 	}
 	public MapView[] getMapviews() {
 		return views;
+	}
+	
+	public ItemStack getMap() {
+		  MapMeta meta = (MapMeta) stack.getItemMeta();
+		  meta.setMapId(view.getId());
+		  stack.setItemMeta(meta);
+		  return stack;
+	}
+	
+	public ItemStack[] getMaps() {
+		for(int i =0; i<views.length; i++) {
+			  MapMeta meta = (MapMeta) stacks[i].getItemMeta();
+			  meta.setMapId(view.getId());
+			  stacks[i].setItemMeta(meta);
+		}
+		return stacks;
 	}
 	public void renderMap(BufferedImage image) {
 		removeRenderMap();

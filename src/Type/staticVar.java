@@ -38,6 +38,6 @@ public class staticVar {
 		staticVar.brick[0].setUUID(uuid[0]);
 		staticVar.brick[1].setUUID(uuid[1]);
 		staticVar.ball = new Ball(staticVar.radius,staticVar.color,staticVar.ballIncrease,ratio);
-		staticVar.mapData = new MapData(world,(byte) (ratio*ratio));
+		staticVar.mapData = new MapData(world,(byte) (ratio));
 	}
 }

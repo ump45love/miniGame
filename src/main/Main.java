@@ -17,7 +17,7 @@ public class Main extends JavaPlugin implements Listener{
 	public void onEnable(){
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
 		getServer().getPluginManager().registerEvents(new pressKey(),this);
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(new Main(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			public void run() {
 				if(staticVar.onOff) {
 					playGameFunction.run();

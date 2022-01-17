@@ -17,12 +17,12 @@ public class Main extends JavaPlugin implements Listener{
 	public void onEnable(){
 		Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "start");
 		getServer().getPluginManager().registerEvents(new pressKey(),this);
-		staticVar.task = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(new Main(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(new Main(), new Runnable() {
 			public void run() {
-				if(!staticVar.onOff)
-					Bukkit.getServer().getScheduler().cancelTask(staticVar.task);
-				playGameFunction.run();
-			}},0,0);
+				if(staticVar.onOff) {
+					playGameFunction.run();
+				}
+			}},staticVar.time,staticVar.time);
 		getCommand("map").setExecutor(new getCommand());
 	}
 	     

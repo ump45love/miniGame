@@ -8,7 +8,7 @@ import org.bukkit.World;
 import Type.*;
 
 public class playGameFunction {
-	void start(UUID uuid[],byte ratio,World world) {
+	public static void start(UUID uuid[],byte ratio,World world) {
 		staticVar.location.add(Bukkit.getPlayer(uuid[0]).getLocation());
 		staticVar.init(ratio,uuid,world);
 		staticVar.brick[0].setPosiotion(0+staticVar.brickBorder, 0);

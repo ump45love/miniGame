@@ -17,9 +17,9 @@ public class MapData{
 	private int id;
 	private int ids[];
 	private MapView view;
-	private MapView[] views = null;
-	ItemStack stack = new ItemStack(Material.FILLED_MAP);
-	ItemStack stacks[] = null;
+	private MapView[] views;
+	ItemStack stack;
+	ItemStack stacks[];
 	public MapData(World world){
 		this.world = world;
 		view = Bukkit.createMap(world);
@@ -35,6 +35,8 @@ public class MapData{
 			ids[i] = views[i].getId();
 			stacks[i] = new ItemStack(Material.FILLED_MAP);
 		}
+		stack = new ItemStack(Material.FILLED_MAP);
+		
 	}
 	
 	public void setWorld(World world) {

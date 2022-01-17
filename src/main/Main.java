@@ -23,7 +23,7 @@ public class Main extends JavaPlugin implements Listener{
 					playGameFunction.run();
 				}
 			}},staticVar.time,staticVar.time);
-		getCommand("map").setExecutor(new getCommand());
+		getCommand("pp").setExecutor(new getCommand());
 	}
 	     
 	@Override

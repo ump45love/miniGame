@@ -54,9 +54,8 @@ public class getCommand implements CommandExecutor {
 	  
 	  public boolean isPlayer(World world,String name) {
 		  List<Player> array = world.getPlayers();
-		  
 		  for(int i =0; i<array.size(); i++) {
-			  if(name == array.get(i).getName())
+			  if(name.equals(array.get(i).getName()))
 				  return true;
 		  }
 		  return false;
@@ -71,7 +70,7 @@ public class getCommand implements CommandExecutor {
 	  
 	  public boolean distance(Player player, String name) {
 		  Location location = player.getLocation();
-		  if(location.distance(Bukkit.getPlayer(name).getLocation())>10)
+		  if(location.distance(Bukkit.getPlayer(name).getLocation())<10)
 			  return true;
 		  return false;
 	  }

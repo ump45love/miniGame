@@ -1,7 +1,10 @@
 package Type;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.Location;
 import org.bukkit.World;
 
 public class staticVar {
@@ -9,6 +12,7 @@ public class staticVar {
 	public static Ball ball;
 	public static Brick brick[] = new Brick[2];
 	public static Canvas canvas;
+	public static List<Location> location = new ArrayList<Location>();
 	public static boolean onOff = false;
 	public static byte brickWidth = 10;
 	public static byte brickHeight = 50;

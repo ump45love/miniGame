@@ -2,12 +2,14 @@ package game;
 
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import Type.*;
 
 public class playGameFunction {
 	void start(UUID uuid[],byte ratio,World world) {
+		staticVar.location.add(Bukkit.getPlayer(uuid[0]).getLocation());
 		staticVar.init(ratio,uuid,world);
 		staticVar.brick[0].setPosiotion(0+staticVar.brickBorder, 0);
 		staticVar.brick[0].setUUID(uuid[0]);

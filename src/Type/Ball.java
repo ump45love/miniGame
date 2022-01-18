@@ -21,7 +21,7 @@ public class Ball extends CanvasParent{
 		if(radius>position[0]) {
 			return 1;
 		}
-		else if( ( (ratio*256)-radius)<position[0]) {
+		else if( ( (ratio*staticVar.mapSize)-radius)<position[0]) {
 			return 2;
 		}
 		return 0;
@@ -63,7 +63,7 @@ public class Ball extends CanvasParent{
 		if(0 >= position[1]) {
 			moveY = 1;
 		}
-		else if((ratio*256)<=position[1]) {
+		else if((ratio*staticVar.mapSize)<=position[1]) {
 			moveY = -1;
 		}
 	}
@@ -88,14 +88,20 @@ public class Ball extends CanvasParent{
 				decreaseY();
 			}
 		}
+		
+		if(position[0] >123) {
+			position[0] = 0;
+		}
+		if(position[1] >123)
+			position[1] = 1;
 	}
 	public void increaseX() {
-		if((position[0] + increase) <(256*ratio))
+		if((position[0] + increase) <(staticVar.mapSize*ratio))
 			position[0] = position[0] + increase*ratio;
 		
 	}
 	public void increaseY() {
-		if((position[1] + increase) <(256*ratio))
+		if((position[1] + increase) <(staticVar.mapSize*ratio))
 			position[1] =position[1] + increase*ratio;
 		
 	}

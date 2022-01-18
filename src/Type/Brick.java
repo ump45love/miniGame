@@ -52,12 +52,13 @@ public class Brick extends CanvasParent {
 	}
 
 	public void increaseX() {
-		if((position[0] + increase) <(256*ratio))
+		if((position[0] + increase) <(staticVar.mapSize*ratio))
 			position[0] = position[0] + increase;
 		
 	}
 	public void increaseY() {
-		if((position[1] + increase) <(256*ratio))
+		System.out.printf("%d %d\n",position[1],((staticVar.mapSize*ratio)-(height*ratio)));
+		if((position[1] + increase) <(staticVar.mapSize*ratio)-(height*ratio))
 			position[1] =position[1] + increase;
 		
 	}

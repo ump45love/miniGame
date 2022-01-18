@@ -22,7 +22,7 @@ public class Main extends JavaPlugin implements Listener{
 				if(staticVar.onOff) {
 					playGameFunction.run();
 				}
-			}},staticVar.time,staticVar.time);
+			}},0,0);
 		getCommand("pp").setExecutor(new getCommand());
 	}
 	     

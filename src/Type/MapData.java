@@ -16,14 +16,16 @@ public class MapData{
 	private World world;
 	private int id;
 	private int ids[];
-	private MapView view;
+	private MapView view;;
 	private MapView[] views;
-	ItemStack stack;
+	ItemStack stack = null;
 	ItemStack stacks[];
 	public MapData(World world){
 		this.world = world;
 		view = Bukkit.createMap(world);
 		this.id = view.getId();
+		stack = new ItemStack(Material.FILLED_MAP);
+		
 	}
 	public MapData(World world, byte count){
 		this.world = world;
@@ -35,7 +37,6 @@ public class MapData{
 			ids[i] = views[i].getId();
 			stacks[i] = new ItemStack(Material.FILLED_MAP);
 		}
-		stack = new ItemStack(Material.FILLED_MAP);
 		
 	}
 	
@@ -86,7 +87,7 @@ public class MapData{
 		return stacks;
 	}
 	public void renderMap(BufferedImage image) {
-		removeRenderMap();
+		//removeRenderMap();
 		view.addRenderer(new MapRenderer() {
 		public void render(MapView view, MapCanvas canvas, Player player) {
 		canvas.drawImage(0, 0, image);
@@ -96,7 +97,7 @@ public class MapData{
 	}
 	
 	public void renderMaps(BufferedImage[] image) {
-		removeRenderMaps();
+		//removeRenderMaps();
 		for(int i =0; i<views.length; i++) {
 			final int number = i;
 			views[i].addRenderer(new MapRenderer() {

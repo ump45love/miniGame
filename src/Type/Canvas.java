@@ -14,27 +14,23 @@ import ij.process.ImageProcessor;
 
 public class Canvas extends CanvasParent{
 	private int color;
-	private ImagePlus canvas = new ImagePlus();
+	private ImagePlus canvas = null;
 	ImageProcessor paperProcessor = null;
 	MapView view = null;
 	MapView views[] = null;
 	ItemStack stack = null;
 	ItemStack stacks[] = null;
 	
-	public Canvas() {
-		super((byte)0);
-		color = 0;
-		
+	public Canvas(byte ratio,int color) {
+		super(ratio);
+		this.color = color;
+		canvas = new ImagePlus();		
+		setCanvas();
 	}
 	
-	public Canvas(byte size,int color) {
-		super((byte)0);
-		color = 0;
-		
-	}
 	
 	public void setCanvas() {
-		paperProcessor = new ColorProcessor(256*ratio,256*ratio);
+		paperProcessor = new ColorProcessor(staticVar.mapSize*ratio,staticVar.mapSize*ratio);
 		paperProcessor.setBackgroundValue(color);
 		canvas.setProcessor(paperProcessor);
 	}
@@ -50,7 +46,7 @@ public class Canvas extends CanvasParent{
 			Roi roi[] = new Roi[ratio*ratio];
 			for(int i =0; i<ratio; i++) {
 				for(int j = 0; j<ratio; j++) {
-				roi[count++] = new Roi(i*256,j*256,256,256);
+				roi[count++] = new Roi(i*staticVar.mapSize,j*staticVar.mapSize,staticVar.mapSize,staticVar.mapSize);
 				}
 			}
 			return canvas.crop(roi);
@@ -70,7 +66,7 @@ public class Canvas extends CanvasParent{
 			Roi roi[] = new Roi[ratio*ratio];
 			for(int i =0; i<ratio; i++) {
 				for(int j = 0; j<ratio; j++) {
-				roi[count++] = new Roi(i*256,j*256,256,256);
+				roi[count++] = new Roi(i*staticVar.mapSize,j*staticVar.mapSize,staticVar.mapSize,staticVar.mapSize);
 				}
 			}
 			ImagePlus[] image = canvas.crop(roi);
@@ -99,12 +95,6 @@ public class Canvas extends CanvasParent{
 		paperProcessor.fillRect(position[0], position[1], size[0]*ratio, size[1]*ratio);
 	
 	}
-	public Canvas(int color,byte ratio) {
-		super(ratio);
-		this.color = color;
-		setCanvas();
-	}
-	
 	public void setColor(int color) {
 		this.color = color;
 		setCanvas();

@@ -2,11 +2,17 @@ package place;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Rotation;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.FaceAttachable.AttachedFace;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
+
+import Type.staticVar;
 
 public class placeMapFunction {
 	@SuppressWarnings("deprecation")
@@ -15,6 +21,7 @@ public class placeMapFunction {
 		    Block b = null;
 		    double x = loc.getX();
 		    double y = loc.getY();
+		    loc.setZ(loc.getZ()-2); 
 			for(int i = 0; i< size; i++) {
 				loc.setX(x+i);
 				for(int j = 0; j<size; j++) {
@@ -32,8 +39,10 @@ public class placeMapFunction {
 		 double y = loc.getY();
 		 loc.setX(x);
 		 loc.setY(y); 
-		 ItemFrame f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()+1), ItemFrame.class);
-		 f.setItem(item);
+		 loc.setZ(loc.getZ()); 
+		 staticVar.f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()-1), ItemFrame.class);
+		 staticVar.f.setMetadata("frame",new FixedMetadataValue(null, item));
+		 //staticVar.f.setItem(item,false);
 	}
 	
 	public static  void placeMaps(Location loc,int size,ItemStack[] item) {

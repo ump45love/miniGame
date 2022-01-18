@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.ItemFrame;
 
 public class staticVar {
 	public static MapData mapData;
@@ -14,16 +15,20 @@ public class staticVar {
 	public static Canvas canvas;
 	public static List<Location> location = new ArrayList<Location>();
 	public static boolean onOff = false;
-	public static byte brickWidth = 10;
-	public static byte brickHeight = 50;
+	public static byte brickWidth = 7;
+	public static byte brickHeight = 35;
 	public static byte radius = 10;
 	public static int color = 0xFFFFFF;
 	public static int canvasColor = 0;
-	public static byte brickIncrease = 4;
-	public static byte ballIncrease = 4;
+	public static byte brickIncrease = 3;
+	public static byte ballIncrease = 3;
 	public static byte checkWinner = 1;
-	public static byte brickBorder = 20;
-	public static int time = 500;
+	public static byte brickBorder = 10;
+	public static int time = 1;
+	public static int mapSize = 128;
+	public static int number = 0;
+	public static ItemFrame f;
+	public static Location l;
 	
 	static public boolean getOnOff() {
 		return onOff;
@@ -38,6 +43,9 @@ public class staticVar {
 		staticVar.brick[0].setUUID(uuid[0]);
 		staticVar.brick[1].setUUID(uuid[1]);
 		staticVar.ball = new Ball(staticVar.radius,staticVar.color,staticVar.ballIncrease,ratio);
-		staticVar.mapData = new MapData(world,(byte) (ratio));
+		if(ratio > 1)
+			staticVar.mapData = new MapData(world,(byte) (ratio));
+		else
+			staticVar.mapData = new MapData(world);
 	}
 }

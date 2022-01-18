@@ -13,7 +13,7 @@ import Type.staticVar;
 
 public class pressKey implements Listener  {
 	@EventHandler
-	 public void onMove(PlayerMoveEvent event) {
+	 public void onMove(PlayerMoveEvent event) throws InterruptedException {
 		if(staticVar.getOnOff()) {
 		 Player player  = event.getPlayer();
 		 UUID playerUUID = player.getUniqueId();
@@ -25,28 +25,28 @@ public class pressKey implements Listener  {
 	    	 	if(to.getX()!= from.getX()) {
 	    	 		if(0.5<formX) {
 	    	 			if(from.getX()-to.getX() < 0)
-	    	 				staticVar.brick[i].increaseX();
+	    	 				staticVar.brick[i].increaseY();
 	    	 			else
-	    	 				staticVar.brick[i].decreaseX();
+	    	 				staticVar.brick[i].decreaseY();
 	    	 		}
 	    	 		else if(-0.5 > formX) {
 	    	 			if(to.getX()-from.getX() < 0)
-	    	 				staticVar.brick[i].increaseX();
+	    	 				staticVar.brick[i].increaseY();
 	    	 			else
-	    	 				staticVar.brick[i].decreaseX();
+	    	 				staticVar.brick[i].decreaseY();
 	    	 		}
 	    	 		else{
 	    	 			if(-0.5>from.getDirection().getZ()) {
 	    	 				if(from.getZ()-to.getZ() < 0)
-	    	 					staticVar.brick[i].decreaseX();
+	    	 					staticVar.brick[i].increaseY();
 	    	 				else
-	    	 					staticVar.brick[i].decreaseX();
+	    	 					staticVar.brick[i].decreaseY();
 	    	 			}
 	    	 			else {
 	    	 				if(from.getZ()-to.getZ() < 0)
-	    	 					staticVar.brick[i].increaseX();
+	    	 					staticVar.brick[i].decreaseY();
 	    	 				else
-	    	 					staticVar.brick[i].decreaseX();
+	    	 					staticVar.brick[i].increaseY();
 	    	 			}
 	    	 		}
 	    	 	}

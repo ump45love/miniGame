@@ -82,7 +82,7 @@ public class MapData{
 	public ItemStack[] getMaps() {
 		for(int i =0; i<views.length; i++) {
 			  MapMeta meta = (MapMeta) stacks[i].getItemMeta();
-			  meta.setMapId(view.getId());
+			  meta.setMapId(views[i].getId());
 			  stacks[i].setItemMeta(meta);
 		}
 		return stacks;
@@ -117,7 +117,7 @@ public class MapData{
 	public void removeRenderMaps() {
 		for(int i = 0; i<views.length; i++) {
 		 for(MapRenderer r : views[i].getRenderers()) {
-				view.removeRenderer(r);
+				views[i].removeRenderer(r);
 		  }
 		}
 	}

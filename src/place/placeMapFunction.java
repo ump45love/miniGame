@@ -39,22 +39,22 @@ public class placeMapFunction {
 		 double y = loc.getY();
 		 loc.setX(x);
 		 loc.setY(y); 
-		 loc.setZ(loc.getZ()); 
 		 staticVar.f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()-1), ItemFrame.class);
-		// staticVar.f.setItem(item,false);
+		 staticVar.f.setItem(item,false);
 	}
 	
 	public static  void placeMaps(Location loc,int size,ItemStack[] item) {
 		 World w = loc.getWorld();
-		 int count = 0;
 		 double x = loc.getX();
 		 double y = loc.getY();
-		 for(int i = 0; i< size; i++) {
-			loc.setX(x+i);
-			for(int j = 0; j<size; j++) {
-				loc.setY(y+j); 
-				 ItemFrame f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()+1), ItemFrame.class);
-		         f.setItem(item[count]);
+		 int count = 0;
+		 for(int i = 0; i <size; i++) {
+			 loc.setY(y+i);
+			for(int j = 0; j <size; j++) {
+				 loc.setX(x+j); 
+				//2 5 8 1 4 7 0 3 6
+				 ItemFrame f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()-1), ItemFrame.class);
+		         f.setItem(item[(size-1-i)+(j*size)]);
 			}
 		 }
 	}

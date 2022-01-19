@@ -34,7 +34,7 @@ public class getCommand implements CommandExecutor {
 					  playGameFunction.start(getUUID(player,args[1]),(byte) 1,world);
 				  }
 				  else {
-					  if(isStringInteger(args[2], args[2].length())) {errorMessage("(size는 숫자만 입력해야합니다.)",player,ChatColor.BLUE); return true;}
+					  if(isStringInteger(args[2])) {errorMessage("(size는 숫자만 입력해야합니다.)",player,ChatColor.BLUE); return true;}
 					  playGameFunction.start(getUUID(player,args[1]),(byte) Integer.parseInt(args[2]),world);
 				  }
 				  break;
@@ -82,11 +82,12 @@ public class getCommand implements CommandExecutor {
 		  return uuid;
 	  }
 	  
-	  public static boolean isStringInteger(String stringToCheck, int radix) {
-	        Scanner sc = new Scanner(stringToCheck.trim());
-	        if(!sc.hasNextInt(radix)) return false;
-	        sc.nextInt(radix);
-	        return !sc.hasNext();
-	    }
+	  public static boolean isStringInteger(String stringToCheck) {
+		  for(int i =0; i<stringToCheck.length();i++)
+		  if(!Character.isDigit(stringToCheck.charAt(i))) {
+			  return true;
+		  }
+	  return false;
+	  }
 
 }

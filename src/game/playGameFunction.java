@@ -21,7 +21,7 @@ public class playGameFunction {
 		staticVar.init(ratio,uuid,world);
 		staticVar.brick[0].setPosiotion(staticVar.brickBorder*ratio, 0);
 		staticVar.brick[0].setUUID(uuid[0]);
-		staticVar.brick[1].setPosiotion((staticVar.mapSize-staticVar.brickBorder-staticVar.brickWidth),0);
+		staticVar.brick[1].setPosiotion((staticVar.mapSize-staticVar.brickBorder-staticVar.brickWidth)*ratio,0);
 		staticVar.brick[1].setUUID(uuid[1]);
 		staticVar.ball.setPosiotion((staticVar.mapSize*ratio)/2, (staticVar.mapSize*ratio)/2);
 		staticVar.ball.setPosiotion((staticVar.mapSize*ratio)/4, 100);
@@ -29,11 +29,15 @@ public class playGameFunction {
 		if(ratio >1) {
 			staticVar.mapData.renderMaps(staticVar.canvas.getbufferedImages());
 			placeMapFunction.placeMaps(Bukkit.getPlayer(uuid[0]).getLocation(),ratio,staticVar.mapData.getMaps());
+			staticVar.l = Bukkit.getPlayer(uuid[0]).getLocation();
+			for(ItemStack array : staticVar.mapData.getMaps())
+				Bukkit.getPlayer(uuid[0]).getInventory().addItem(array);
 		}
 		else {
 			staticVar.mapData.renderMap(staticVar.canvas.getbufferedImage());
 			placeMapFunction.placeMap(Bukkit.getPlayer(uuid[0]).getLocation(),staticVar.mapData.getMap());
 			staticVar.l = Bukkit.getPlayer(uuid[0]).getLocation();
+			Bukkit.getPlayer(uuid[0]).getInventory().addItem(staticVar.mapData.getMap());
 			
 		}
 		staticVar.onOff = true;
@@ -54,9 +58,6 @@ public class playGameFunction {
 		else if(staticVar.canvas.getRatio() == 1) {
 			staticVar.mapData.removeRenderMap();
 			staticVar.mapData.renderMap(staticVar.canvas.getbufferedImage());
-			staticVar.f.setItem(staticVar.mapData.getMap());
-
-			
 		}
 		if(staticVar.ball.checkGameOver() > 0) {
 			staticVar.checkWinner = staticVar.ball.checkGameOver();

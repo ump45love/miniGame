@@ -10,32 +10,32 @@ public class Ball extends CanvasParent{
 	
 	public Ball(byte radius,int color,byte increase,byte ratio) {
 		super(ratio);
-		this.increase = increase;
-		this.radius = radius;
+		this.increase = increase*ratio;
+		this.radius = (byte) (radius*ratio);
 		this.color = color;
 		moveY = 1;
 		moveX = 1;
 	}
 	
 	public byte checkGameOver(){
-		if(radius>position[0]) {
+		if((radius)>position[0]) {
 			return 1;
 		}
-		else if( ( (ratio*staticVar.mapSize)-radius)<position[0]) {
+		else if( ( ((staticVar.mapSize*ratio)-radius))<position[0]) {
 			return 2;
 		}
 		return 0;
 	}
 	
 	public void setRadius(byte radius) {
-		this.radius = radius;
+		this.radius = (byte) (radius*ratio);
 	}
 	
 	public void setColor(int color) {
 		this.color = color;
 	}
 	public void setIncrease(byte increase) {
-		this.increase = increase;
+		this.increase = increase*ratio;
 	}
 	
 	public void brickCrashLeft(Brick brick) {
@@ -67,10 +67,10 @@ public class Ball extends CanvasParent{
 		}
 	}
 	public void wallCrash() {
-		if(0 >= position[1]) {
+		if(increase >= position[1]) {
 			moveY = 1;
 		}
-		else if((ratio*(staticVar.mapSize))<=position[1]+radius) {
+		else if((staticVar.mapSize*ratio)<=position[1]+radius) {
 			moveY = -1;
 		}
 	}
@@ -98,31 +98,26 @@ public class Ball extends CanvasParent{
 	}
 	public void increaseX() {
 		if((position[0] + increase) <(staticVar.mapSize*ratio))
-			position[0] = position[0] + increase*ratio;
+			position[0] = position[0] + increase;
 		
 	}
 	public void increaseY() {
 		if((position[1] + increase) <(staticVar.mapSize*ratio))
-			position[1] =position[1] + increase*ratio;
+			position[1] =position[1] + increase;
 		
 	}
 	
 	public void decreaseX() {
 		if((position[0] - increase) >= 0)
-			position[0] = position[0] - increase*ratio;
+			position[0] = position[0] - increase;
 		
 	}
 	public void decreaseY() {
 		if((position[1] - increase) >= 0)
-			position[1] =position[1] - increase*ratio;
+			position[1] =position[1] - increase;
 		
 	}
 
-	public void increasePosition(int inX, int inY) {
-		position[0] = position[0]+inX;
-		position[1] =position[1]+inY;
-		
-	}
 	public void setPosiotion(int x, int y) {
 		position[0] = x;
 		position[1] = y;

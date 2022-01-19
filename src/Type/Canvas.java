@@ -70,6 +70,7 @@ public class Canvas extends CanvasParent{
 				}
 			}
 			ImagePlus[] image = canvas.crop(roi);
+			System.out.println(image[0].getHeight());
 			BufferedImage[] bufferImage = new BufferedImage[ratio*ratio];
 			for(int i =0; i<ratio*ratio; i++)
 				bufferImage[i] = image[i].getBufferedImage();
@@ -84,7 +85,7 @@ public class Canvas extends CanvasParent{
 		byte radius = ball.getSize();
 		int color = ball.getColor();
 		paperProcessor.setColor(color);
-		paperProcessor.fillOval(position[0], position[1], radius*ratio, radius*ratio);
+		paperProcessor.fillOval(position[0], position[1], radius, radius);
 	}
 	
 	public void drawBrick(Brick brick) {
@@ -92,7 +93,7 @@ public class Canvas extends CanvasParent{
 		byte size[] = brick.getSize();
 		int color = brick.getColor();
 		paperProcessor.setColor(color);
-		paperProcessor.fillRect(position[0], position[1], size[0]*ratio, size[1]*ratio);
+		paperProcessor.fillRect(position[0], position[1], size[0], size[1]);
 	
 	}
 	public void setColor(int color) {

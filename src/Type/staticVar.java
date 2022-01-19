@@ -21,7 +21,7 @@ public class staticVar {
 	public static int color = 0xFFFFFF;
 	public static int canvasColor = 0;
 	public static byte brickIncrease = 3;
-	public static byte ballIncrease = 1;
+	public static byte ballIncrease = 3;
 	public static byte checkWinner = 1;
 	public static byte brickBorder = 10;
 	public static int time = 1;

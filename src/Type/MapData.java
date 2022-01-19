@@ -16,7 +16,8 @@ public class MapData{
 	private World world;
 	private int id;
 	private int ids[];
-	private MapView view;;
+	private MapView view;
+	private MapView view3[];
 	private MapView[] views;
 	ItemStack stack = null;
 	ItemStack stacks[];

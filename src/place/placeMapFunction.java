@@ -41,8 +41,7 @@ public class placeMapFunction {
 		 loc.setY(y); 
 		 loc.setZ(loc.getZ()); 
 		 staticVar.f = (ItemFrame) w.spawn(new Location(w,loc.getX(),loc.getY(),loc.getZ()-1), ItemFrame.class);
-		 staticVar.f.setMetadata("frame",new FixedMetadataValue(null, item));
-		 //staticVar.f.setItem(item,false);
+		// staticVar.f.setItem(item,false);
 	}
 	
 	public static  void placeMaps(Location loc,int size,ItemStack[] item) {

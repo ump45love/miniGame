@@ -25,15 +25,15 @@ public class pressKey implements Listener  {
 	    	 	if(to.getX()!= from.getX()) {
 	    	 		if(0.5<formX) {
 	    	 			if(from.getX()-to.getX() < 0)
-	    	 				staticVar.brick[i].increaseY();
-	    	 			else
 	    	 				staticVar.brick[i].decreaseY();
+	    	 			else
+	    	 				staticVar.brick[i].increaseY();
 	    	 		}
 	    	 		else if(-0.5 > formX) {
 	    	 			if(to.getX()-from.getX() < 0)
-	    	 				staticVar.brick[i].increaseY();
-	    	 			else
 	    	 				staticVar.brick[i].decreaseY();
+	    	 			else
+	    	 				staticVar.brick[i].increaseY();
 	    	 		}
 	    	 		else{
 	    	 			if(-0.5>from.getDirection().getZ()) {
@@ -47,6 +47,7 @@ public class pressKey implements Listener  {
 	    	 					staticVar.brick[i].decreaseY();
 	    	 				else
 	    	 					staticVar.brick[i].increaseY();
+
 	    	 			}
 	    	 		}
 	    	 	}

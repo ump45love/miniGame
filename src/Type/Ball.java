@@ -38,32 +38,39 @@ public class Ball extends CanvasParent{
 		this.increase = increase;
 	}
 	
-	public void brickCrash(Brick brick) {
+	public void brickCrashLeft(Brick brick) {
 		int coll[] = brick.getPosition();
 		byte coll2[] = brick.getSize();
-		if((coll[0]+coll2[0]+radius)>position[0]) {
-			if( (coll[1]<position[0]) && (coll[1]+(coll2[1]/2)>position[0])) {
+		if((coll[0]+coll2[0])>position[0]) {
+			if( (coll[1]<position[1]) && (coll[1]+(coll2[1]/2)>position[1])) {
 				moveX=1;
+				moveY=-1;
 			}
-			else if( ((coll[1]+(coll2[1]/2))<position[0])&& ((coll[1]+coll2[1])>position[0]) ){
+			else if( ((coll[1]+(coll2[1]/2))<position[1])&& ((coll[1]+coll2[1])>position[1]) ){
 				moveX=1;
-			}
-		}
-		else if((coll[0]-radius)>position[0]) {
-			if( (coll[1]<position[0]) && (coll[1]+(coll2[1]/2)>position[0])) {
-				moveX=-1;
-			}
-			else if( ((coll[1]+(coll2[1]/2))<position[0])&& ((coll[1]+coll2[1])>position[0]) ){
-				moveX=-1;
+				moveY=1;
 			}
 		}
 	}
-	
+	public void brickCrashRight(Brick brick) {
+		int coll[] = brick.getPosition();
+		byte coll2[] = brick.getSize();
+		if((coll[0]-radius)<position[0]) {
+			if( (coll[1]<position[1]) && (coll[1]+(coll2[1]/2)>position[1])) {
+				moveX=-1;
+				moveY=-1;
+			}
+			else if( ((coll[1]+(coll2[1]/2))<position[1])&& ((coll[1]+coll2[1])>position[1]) ){
+				moveX=-1;
+				moveY=1;
+			}
+		}
+	}
 	public void wallCrash() {
 		if(0 >= position[1]) {
 			moveY = 1;
 		}
-		else if((ratio*staticVar.mapSize)<=position[1]) {
+		else if((ratio*(staticVar.mapSize))<=position[1]+radius) {
 			moveY = -1;
 		}
 	}
@@ -88,12 +95,6 @@ public class Ball extends CanvasParent{
 				decreaseY();
 			}
 		}
-		
-		if(position[0] >123) {
-			position[0] = 0;
-		}
-		if(position[1] >123)
-			position[1] = 1;
 	}
 	public void increaseX() {
 		if((position[0] + increase) <(staticVar.mapSize*ratio))
